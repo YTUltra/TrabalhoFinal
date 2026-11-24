@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JSONApp.NewPage1"
+             Title="NewPage1"
+             BackgroundColor="DarkGray">
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="10">
+            <Label Text="Cadastro de Clientes" FontSize="Large"
+                   HorizontalOptions="Center" FontAttributes="Bold"/>
+
+            <Border StrokeShape="Rectangle" StrokeThickness="2">
+                <VerticalStackLayout Padding="10" Spacing="10">
+                    <Label Text="Preencha os campos abaixo para cadastrar um cliente:"
+                           FontSize="18" HorizontalOptions="Center" FontAttributes="Bold"/>
+
+                    <Entry x:Name="txNome" Placeholder="Digite o nome do cliente..."/>
+
+                    <Entry x:Name="txAno" Placeholder="Digite o ano de nascimento..."/>
+
+                    <Entry x:Name="txCPF" Placeholder="Digite o CPF do cliente..."/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Button x:Name="btAdicionarCliente" Text="Adicionar..."
+                    HorizontalOptions="Fill" Clicked="btAdicionarCliente_Clicked"/>
+
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Button x:Name="btJSONtoList" Text="Converter JSON para List"
+                        HorizontalOptions="Fill" Clicked="btJSONtoList_Clicked"/>
+
+                <Button x:Name="btWebJSONtoList" Text="JSON Web para List"
+                        HorizontalOptions="Fill" Clicked="btWebJSONtoList_Clicked"/>
+            </HorizontalStackLayout>
+
+            <Border StrokeShape="Rectangle" StrokeThickness="5" Margin="5" Padding="5">
+                <Label x:Name="lbStatus" Text="Status: Aguardando..." TextColor="Blue"/>
+            </Border>
+
+            <Border StrokeShape="Rectangle" StrokeThickness="2" Margin="5" Padding="5">
+                <CollectionView x:Name="lvClientes" ItemsSource="{Binding ListaCliente}">
+                    <CollectionView.Header>
+                        <HorizontalStackLayout>
+                            <Label Text="Nome" FontAttributes="Bold" WidthRequest="200"/>
+                            <Label Text="Ano" FontAttributes="Bold" WidthRequest="50"/>
+                            <Label Text="CPF" FontAttributes="Bold" WidthRequest="100"/>
+                        </HorizontalStackLayout>
+                    </CollectionView.Header>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid RowSpacing="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Label Grid.Column="0" Text="{Binding Nome}" />
+                                <Label Grid.Column="1" Text="{Binding AnoNascimento}" />
+                                <Label Grid.Column="2" Text="{Binding CPF}" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+
+            <Label x:Name="lbJSON" Text=""/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>

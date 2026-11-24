@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BibliotecaPessoal.Views.LivroFormPage"
+             Title="Livro"
+             BackgroundColor="#F5F1E8">
+    <ScrollView>
+        <VerticalStackLayout Padding="22" Spacing="12">
+            <Label x:Name="TituloPagina" Text="Novo livro" FontSize="26" FontAttributes="Bold" TextColor="#18324B" />
+            <Entry x:Name="TituloEntry" Placeholder="Título (até 100 caracteres)" MaxLength="100" />
+            <Entry x:Name="AutorEntry" Placeholder="Autor (até 80 caracteres)" MaxLength="80" />
+            <Entry x:Name="AnoEntry" Placeholder="Ano de publicação" Keyboard="Numeric" MaxLength="4" />
+            <Picker x:Name="CategoriaPicker" Title="Selecione a categoria" ItemDisplayBinding="{Binding Nome}" />
+            <Label Text="Formato" FontAttributes="Bold" />
+            <HorizontalStackLayout Spacing="16">
+                <RadioButton x:Name="FisicoRadio" GroupName="formato" Content="Físico" IsChecked="True" />
+                <RadioButton x:Name="EbookRadio" GroupName="formato" Content="E-book" />
+                <RadioButton x:Name="AudioRadio" GroupName="formato" Content="Áudio" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="4">
+                <CheckBox x:Name="LidoCheck" />
+                <Label Text="Já li este livro" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="4">
+                <CheckBox x:Name="FavoritoCheck" />
+                <Label Text="Marcar como favorito" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <Button Text="Salvar livro" Clicked="SalvarClicked" />
+            <Button Text="Cancelar" Clicked="CancelarClicked" BackgroundColor="#607080" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

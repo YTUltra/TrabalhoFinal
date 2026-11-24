@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SQLApp.View.NewPage1"
+             Title="Cadastro de Pessoas">
+    <ScrollView>
+        <VerticalStackLayout Padding="10,0,0,0" Spacing="10">
+            <Label Text="ID da Pessoa:"/>
+            <HorizontalStackLayout Spacing="20">
+                <Entry x:Name="txID" Placeholder="Digite o ID da pessoa" Keyboard="Numeric"/>
+                <Button x:Name="btConsultar" Text="Consultar" Clicked="btConsultar_Clicked"/>
+                <Button x:Name="btLimpar" Text="Limpar Form" Clicked="btLimpar_Clicked"/>
+            </HorizontalStackLayout>
+            <Label Text="Nome da Pessoa:"/>
+            <Entry x:Name="txNome" Placeholder="Digite o nome da pessoa"/>
+            <Label Text="Email da Pessoa:"/>
+            <Entry x:Name="txEmail" Placeholder="Digite o email da pessoa"/>
+        
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Button x:Name="btIncluir" Text="Incluir" Clicked="btIncluir_Clicked"/>
+                <Button x:Name="btAlterar" Text="Alterar" Clicked="btAlterar_Clicked"/>
+                <Button x:Name="btExcluir" Text="Excluir" Clicked="btExcluir_Clicked"/>
+            </HorizontalStackLayout>
+
+            <Picker x:Name="pkOrdem" Title="Ordenar Por" 
+                    SelectedIndexChanged="pkOrdem_SelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>A - Z</x:String>
+                        <x:String>Z - A</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <SearchBar x:Name="sbBuscaPessoa" Placeholder="Digite o nome da pessoa..."
+                       TextChanged="sbBuscaPessoa_TextChanged"/>
+
+            <RefreshView x:Name="rvListaPessoas" Refreshing="rvListaPessoas_Refreshing">
+
+                <CollectionView x:Name="lvListaPessoas"
+                                HorizontalOptions="Start"
+                                SelectionMode="Single"
+                                SelectionChanged="lvListaPessoas_SelectionChanged">
+                    <CollectionView.Header>
+                        <Grid ColumnDefinitions="30,150,150" HorizontalOptions="Start"
+                              BackgroundColor="DarkGray">
+                            <Label Grid.Column="0" Text="ID" FontAttributes="Bold" FontSize="17"/>
+                            <Label Grid.Column="1" Text="NOME" FontAttributes="Bold" FontSize="17"/>
+                            <Label Grid.Column="2" Text="EMAIL" FontAttributes="Bold" FontSize="17"/>
+                        </Grid>
+                    </CollectionView.Header>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="30,150,150" 
+                                  HorizontalOptions="Start" Padding="5">
+                                <Label Grid.Column="0" Text="{Binding Id}"/>
+                                <Label Grid.Column="1" Text="{Binding Nome}"/>
+                                <Label Grid.Column="2" Text="{Binding Email}"/>
+                            </Grid>
+                        </DataTemplate>    
+                    </CollectionView.ItemTemplate>
+                    
+                </CollectionView>
+                
+            </RefreshView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="app_android.MainPage"
+             BackgroundColor="Black">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label Text="Teste de aplicativo"
+                   FontSize="Header"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,50,0,15"/>
+
+            <Label Text="Digite o valor X:"
+                   FontSize="Micro"
+                   Margin="20,5,0,0"/>
+            <Entry x:Name="valorX"
+                   Keyboard="Numeric"
+                   HorizontalOptions="Start"
+                   WidthRequest="200"
+                   Placeholder="0"
+                   Margin="20,0,0,5"/>
+
+            <Label Text="Digite o valor Y:"
+                   FontSize="Micro"
+                   Margin="20,5,0,0"/>
+            <Entry x:Name="valorY"
+                   Keyboard="Numeric"
+                   HorizontalOptions="Start"
+                   WidthRequest="200"
+                   Placeholder="0"
+                   Margin="20,0,0,5"/>
+
+            <Label x:Name="resultado"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   Margin="20,5,0,5"/>
+            
+            <Button x:Name="calcular"
+                    Text="Calcular soma"
+                    FontSize="Medium"
+                    WidthRequest="200"
+                    Margin="20,20,0,20"
+                    Clicked="calcular_Clicked"/>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

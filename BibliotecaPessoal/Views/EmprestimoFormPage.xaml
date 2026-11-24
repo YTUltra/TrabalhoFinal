@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BibliotecaPessoal.Views.EmprestimoFormPage"
+             Title="Empréstimo"
+             BackgroundColor="#F5F1E8">
+    <ScrollView>
+        <VerticalStackLayout Padding="22" Spacing="12">
+            <Label x:Name="TituloPagina" Text="Novo empréstimo" FontSize="26" FontAttributes="Bold" TextColor="#18324B" />
+            <Picker x:Name="LivroPicker" Title="Selecione o livro" ItemDisplayBinding="{Binding Titulo}" />
+            <Entry x:Name="PessoaEntry" Placeholder="Nome de quem pegou (até 60 caracteres)" MaxLength="60" />
+            <Label Text="Data do empréstimo" />
+            <DatePicker x:Name="DataEmprestimoPicker" />
+            <Label Text="Data prevista para devolução" />
+            <DatePicker x:Name="DataDevolucaoPicker" />
+            <HorizontalStackLayout Spacing="4">
+                <CheckBox x:Name="DevolvidoCheck" />
+                <Label Text="Livro já devolvido" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <Button Text="Salvar empréstimo" Clicked="SalvarClicked" />
+            <Button Text="Cancelar" Clicked="CancelarClicked" BackgroundColor="#607080" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

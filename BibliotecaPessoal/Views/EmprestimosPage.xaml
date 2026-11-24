@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BibliotecaPessoal.Views.EmprestimosPage"
+             Title="Empréstimos"
+             BackgroundColor="#F5F1E8">
+    <Grid Padding="18" RowDefinitions="Auto,Auto,*" RowSpacing="12">
+        <SearchBar Grid.Row="0" Placeholder="Buscar por livro ou pessoa" Text="{Binding Pesquisa}" />
+        <Button Grid.Row="1" Text="＋ Registrar empréstimo" Command="{Binding AdicionarCommand}" />
+        <CollectionView Grid.Row="2" ItemsSource="{Binding Emprestimos}" EmptyView="Nenhum empréstimo cadastrado.">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Margin="0,4" Padding="14" BackgroundColor="White" Stroke="#E2D9C8" StrokeShape="RoundRectangle 14">
+                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="10">
+                            <Label Text="{Binding LivroTitulo}" FontAttributes="Bold" FontSize="17" TextColor="#18324B" />
+                            <Label Grid.Row="1" Text="{Binding Pessoa, StringFormat='Com: {0}'}" TextColor="#607080" />
+                            <Label Grid.Row="2" Text="{Binding DataPrevistaDevolucao, StringFormat='Devolver até: {0:dd/MM/yyyy}'}" TextColor="#607080" />
+                            <HorizontalStackLayout Grid.Column="1" Grid.RowSpan="3" Spacing="4" VerticalOptions="Center">
+                                <Button Text="Editar" Padding="8,5" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EditarCommand}" CommandParameter="{Binding .}" />
+                                <Button Text="Excluir" Padding="8,5" BackgroundColor="#A74343" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ExcluirCommand}" CommandParameter="{Binding .}" />
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

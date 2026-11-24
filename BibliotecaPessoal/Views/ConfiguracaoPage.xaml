@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BibliotecaPessoal.Views.ConfiguracaoPage"
+             Title="Configuração"
+             BackgroundColor="#F5F1E8">
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="14">
+            <Label Text="Conexão com Firebase" FontSize="26" FontAttributes="Bold" TextColor="#18324B" />
+            <Label Text="Cole a URL HTTPS do Firebase Realtime Database. Ela ficará salva neste aparelho." TextColor="#607080" />
+            <Entry Text="{Binding Url}" Placeholder="https://seu-projeto-default-rtdb.firebaseio.com" Keyboard="Url" />
+            <Button Text="Salvar URL" Command="{Binding SalvarCommand}" />
+            <Button Text="Testar conexão" Command="{Binding TestarCommand}" BackgroundColor="#D9995B" TextColor="#18324B" />
+            <Border Padding="14" BackgroundColor="White" Stroke="#E2D9C8" StrokeShape="RoundRectangle 14">
+                <Label Text="{Binding Status}" TextColor="#18324B" />
+            </Border>
+            <Label Text="Os dados são organizados em /biblioteca/livros, /biblioteca/categorias e /biblioteca/emprestimos. O acesso depende das regras configuradas no Firebase." TextColor="#607080" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
